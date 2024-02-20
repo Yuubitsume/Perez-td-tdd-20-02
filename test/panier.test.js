@@ -12,6 +12,14 @@ describe('Test Fonction Class Panier', function() {
 
         //Appeler la fonction pour obtenir le résultat réel
         const montantTotal = panier.calculer_montant_total();
+        
+        //Contenu de la console ( Pour voir les articles)
+        console.log("Le contenu du panier actuel ainsi que le prix total du panier : " + montantTotal);
+        //Affiche le contenu du panier actuelle ( peut donc être vide ou non )
+        for (const articleKey in panier.articles) {
+            const article = panier.articles[articleKey];
+            console.log(`Article: ${article.nom}, Quantité: ${article.quantite}, Prix unitaire: ${article.prix_unitaire}`);
+        }
 
         //Résultat Total
         expect(montantTotal).to.equal(32.6);
@@ -41,6 +49,12 @@ describe('Test Fonction Class Panier', function() {
         panier.ajouter_article('Salade', 'salade_1', 5, 1);
 
         panier.vider_panier();
+        console.log("contenu du panier actuelle :")
+        //Boucle sur le panier actuelle et est censé être vide car on vient de le vider
+        for (const articleKey in panier.articles) {
+            const article = panier.articles[articleKey];
+            console.log(`Article: ${article.nom}, Quantité: ${article.quantite}, Prix unitaire: ${article.prix_unitaire}`);
+        }
 
         //S'attend à ce qu'il n'y ait aucune clé liée à un article
         expect(Object.keys(panier.articles).length).to.equal(0);

@@ -22,7 +22,9 @@ class Remise {
             if (article) {
                 const remise = (article['prix_unitaire'] * pourcentage_remise_article) / 100;
                 const montant_article_apres_remise = article['prix_unitaire'] - remise;
-                article['prix_unitaire'] = montant_article_apres_remise;
+                if (montant_article_apres_remise > 0) {
+                    article['prix_unitaire'] = montant_article_apres_remise;
+                }
                 return Math.max(montant_article_apres_remise, 0);
             }
         } else {
