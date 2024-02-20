@@ -1,3 +1,1 @@
-# Chai-example
-
-# nom du repo: b3-dev-nom-prenom
+# Chai-example Repo du TD TDD 
