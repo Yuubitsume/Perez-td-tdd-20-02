@@ -92,6 +92,8 @@ describe('Test Fonction Class Panier', function() {
     
         // Appliquer la remise sur l'article 1
         panier.articles['pomme_1']['prix_unitaire'] = montantApresRemiseArticle1;
+
+        console.log("Prix après la remise sur un article spécifique : " + montantApresRemiseArticle1 + " avec remise de 10%");
     
         expect(panier.calculer_montant_total()).to.equal(74); // Total = (2*27) + 20 = 74 (après remise sur l'article 1)
     });    
