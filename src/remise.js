@@ -10,7 +10,7 @@ class Remise {
         } else {
             const remise = (montant_total * this.pourcentage_remise) / 100;
             const montant_total_remise = montant_total - remise;
-            console.log(montant_total_remise);
+            console.log("voici le prix avec la remise : " + montant_total_remise + " et la remise est de : " + remise);
             return Math.max(remise, 0);
         }
     }

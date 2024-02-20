@@ -67,14 +67,18 @@ describe('Test Fonction Class Panier', function() {
         let panier = new Panier();
         panier.ajouter_article('Pomme', 'pomme_1', 2, 30); // Ajouter 2 articles avec un prix unitaire de 30
         panier.ajouter_article('Orange', 'orange_1', 1, 20); // Ajouter 1 article avec un prix unitaire de 20
-
-        let remise = new Remise();
-        const remiseArticle1 = new Remise(10); // 10% de remise sur l'article 1
-        const montantApresRemiseArticle1 = remiseArticle1.calculer_remise_article('pomme_1', 10); // Calcul de la remise sur l'article 1
-
+    
+        const articles = panier.articles; // Récupérer les articles du panier
+    
+        // Passer les articles à l'instance de Remise
+        let remise = new Remise(10, articles);
+    
+        // Calculer la remise sur l'article 1
+        const montantApresRemiseArticle1 = remise.calculer_remise_article('pomme_1', 10);
+    
         // Appliquer la remise sur l'article 1
         panier.articles['pomme_1']['prix_unitaire'] = montantApresRemiseArticle1;
-
+    
         expect(panier.calculer_montant_total()).to.equal(74); // Total = (2*27) + 20 = 74 (après remise sur l'article 1)
-    });
+    });    
 });
